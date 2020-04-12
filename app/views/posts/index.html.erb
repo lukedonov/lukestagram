@@ -4,6 +4,8 @@
 <% end %>
 
 <% @posts.each do |post|%>
+<p><%= post.user.username %></p>
+<div style="width:300px; height: auto"><%= image_tag(post.image, style: 'width:100%') %></div> 
 <p><%= post.caption%></p> 
 <p><%= post.created_at %></p>
 <% end %>
