@@ -1,7 +1,9 @@
-<% @posts.each do |post|%>
-<%= post.caption%>
-<% end %>
-
+<h1>Hi <%= current_user.username %></h1>
 <%= link_to new_post_path do %>
   New post
+<% end %>
+
+<% @posts.each do |post|%>
+<p><%= post.caption%></p> 
+<p><%= post.created_at %></p>
 <% end %>

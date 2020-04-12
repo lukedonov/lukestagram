@@ -9,5 +9,5 @@ class User < ApplicationRecord
   # validates_presence_of :password, :message => 'You Must Enter a Password'
   # validates_length_of :password, :in => 6..20, :on => :create
 
-  # has_secure_password
+  has_secure_password
 end
