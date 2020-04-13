@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id 
-      redirect_to '/welcome'
+      redirect_to '/posts'
     else
-      redirect_to '/login'
+      redirect_to '/posts'
     end
   end
 
@@ -23,6 +23,10 @@ class SessionsController < ApplicationController
   end
 
   def page_requires_login
+  end
 
+  def destroy
+    reset_session
+    redirect_to posts_url
   end
 end

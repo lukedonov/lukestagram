@@ -1,11 +1,14 @@
 <h1>Hi <%= current_user.username %></h1>
-<%= link_to new_post_path do %>
-  New post
-<% end %>
+<%= link_to "New post", new_post_path if logged_in? %>
 
 <% @posts.each do |post|%>
 <p><%= post.user.username %></p>
 <div style="width:300px; height: auto"><%= image_tag(post.image, style: 'width:100%') %></div> 
-<p><%= post.caption%></p> 
+<p><%= post.caption%></p>
 <p><%= post.created_at %></p>
+<% if current_user.id == post.user_id%>
+<p><%= link_to 'Edit', edit_post_path(post), remote:true %> <%= link_to 'Delete', post, :confirm => "Are you sure?", :method => :delete %>
 <% end %>
+<% end %>
+
+<p><%= link_to "Logout", logout_path if logged_in? %></p>
